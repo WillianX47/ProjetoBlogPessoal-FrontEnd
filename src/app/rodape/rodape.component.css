@@ -1,0 +1,27 @@
+.bg-footer{
+    background-color: #016a6d;
+}
+
+.bg-footer-sec{
+    background-color: #043e52;
+}
+
+ul.social-network{
+    list-style: none;
+    padding: 0;
+}
+
+ul.social-network li{
+    display: inline;
+    margin: 0;
+    padding: 5px;
+}
+
+.fa{
+    font-size: 20pt;
+    color:aqua;
+}
+
+.fa:hover{
+    color: aliceblue;
+}
