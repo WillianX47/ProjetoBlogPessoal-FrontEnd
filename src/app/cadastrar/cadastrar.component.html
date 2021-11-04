@@ -55,7 +55,12 @@
           />
         </div>
         <label class="font-weight-bold">Tipo de usuário</label>
-        <select class="form-control" name="tipo" id="tipo" (change)="tipoUser($event)">
+        <select
+          class="form-control"
+          name="tipo"
+          id="tipo"
+          (change)="tipoUser($event)"
+        >
           <option>Selecione um tipo de usuário:</option>
           <option value="normal">Normal</option>
           <option value="adm">Administrador</option>
@@ -71,7 +76,11 @@
             </button>
           </div>
           <div class="d-flex justify-content-center mt-4 ml-3">
-            <button type="submit" class="btn bt-entrar text-white" (click)="cadastrar()">
+            <button
+              type="submit"
+              class="btn bt-entrar text-white"
+              (click)="cadastrar()"
+            >
               Cadastrar
             </button>
           </div>
