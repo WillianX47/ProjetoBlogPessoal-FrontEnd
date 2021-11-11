@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Tema } from 'src/app/model/Tema';
+import { TemaService } from 'src/app/service/tema.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-tema-edit',
@@ -7,12 +10,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./tema-edit.component.css'],
 })
 export class TemaEditComponent implements OnInit {
-  constructor(private router: Router) {}
+  tema: Tema = new Tema();
+
+  constructor(
+    private router: Router,
+    private temaService: TemaService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     window.scroll(0, 0);
+
+    if (environment.token == '') {
+      this.router.navigate(['/entrar']);
+    }
+
+    let id = this.route.snapshot.params['id'];
+    this.findByIdTema(id);
+    this.temaService.refreshToken();
   }
 
-  
+  findByIdTema(id: number) {
+    this.temaService
+      .getByIdTema(id)
+      .subscribe((resp: Tema) => (this.tema = resp));
+  }
 
+  atualizarTema() {
+    this.temaService
+      .putTema(this.tema, this.tema.id)
+      .subscribe((resp: Tema) => {
+        this.tema = resp;
+        alert('Tema atualizado com sucesso');
+        this.router.navigate(['/tema']);
+      });
+  }
 }

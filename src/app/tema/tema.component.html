@@ -9,7 +9,12 @@
           </h2>
         </div>
         <div class="container col-4">
-          <input class="form-control" placeholder="Procurar tema" type="text" [(ngModel)]="tema.descricaoTema" />
+          <input
+            class="form-control"
+            placeholder="Procurar tema"
+            type="text"
+            [(ngModel)]="tema.descricaoTema"
+          />
         </div>
         <div class="m-3">
           <button class="btn btn-dark" (click)="cadastrar()">Cadastrar</button>
@@ -32,13 +37,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let tema of listaTemas'>
-        <th>{{tema.id}}</th>
-        <td>{{tema.descricaoTema}}</td>
+      <tr *ngFor="let tema of listaTemas">
+        <th>{{ tema.id }}</th>
+        <td>{{ tema.descricaoTema }}</td>
         <td>
           <div>
-            <button class="mr-3 btn btn-info">Editar</button>
-            <button class="btn btn-danger">Apagar</button>
+            <button
+              class="mr-3 btn btn-info"
+              [routerLink]="['/tema-edit', tema.id]"
+            >
+              Editar
+            </button>
+            <button
+              class="btn btn-danger"
+              [routerLink]="['/tema-delete', tema.id]"
+            >
+              Apagar
+            </button>
           </div>
         </td>
       </tr>

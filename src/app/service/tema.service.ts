@@ -27,8 +27,19 @@ export class TemaService {
     );
   }
 
-  findByIdTema(): Observable<Tema>{
-    return this.http.get<Tema>(`https://willsblog.herokuapp.com/api/v1/tema/:{id}`)
+  getByIdTema(id: number): Observable<Tema> {
+    return this.http.get<Tema>(
+      `https://willsblog.herokuapp.com/api/v1/tema/${id}`,
+      this.token
+    );
+  }
+
+  putTema(tema: Tema, id: number): Observable<Tema> {
+    return this.http.put<Tema>(
+      `https://willsblog.herokuapp.com/api/v1/tema/atualizar/${id}`,
+      tema,
+      this.token
+    );
   }
 
   postTema(tema: Tema): Observable<Tema> {
@@ -38,5 +49,4 @@ export class TemaService {
       this.token
     );
   }
-
 }
