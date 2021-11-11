@@ -49,4 +49,11 @@ export class TemaService {
       this.token
     );
   }
+
+  deleteTema(id: number) {
+    return this.http.delete<Tema>(
+      `https://willsblog.herokuapp.com/api/v1/tema/${id}`,
+      this.token
+    );
+  }
 }
