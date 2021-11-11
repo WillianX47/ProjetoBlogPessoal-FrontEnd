@@ -27,6 +27,10 @@ export class TemaService {
     );
   }
 
+  findByIdTema(): Observable<Tema>{
+    return this.http.get<Tema>(`https://willsblog.herokuapp.com/api/v1/tema/:{id}`)
+  }
+
   postTema(tema: Tema): Observable<Tema> {
     return this.http.post<Tema>(
       'https://willsblog.herokuapp.com/api/v1/tema/criar',
@@ -34,4 +38,5 @@ export class TemaService {
       this.token
     );
   }
+
 }
