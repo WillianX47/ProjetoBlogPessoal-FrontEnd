@@ -1,4 +1,4 @@
 export class Tema{
-    public idTema: number;
+    public id: number;
     public descricaoTema: string;
 }

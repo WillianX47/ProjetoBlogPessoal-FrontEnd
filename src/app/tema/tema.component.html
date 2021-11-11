@@ -9,10 +9,10 @@
           </h2>
         </div>
         <div class="container col-4">
-          <input class="form-control" placeholder="Procurar tema" type="text" />
+          <input class="form-control" placeholder="Procurar tema" type="text" [(ngModel)]="tema.descricaoTema" />
         </div>
         <div class="m-3">
-          <button class="btn btn-dark">Cadastrar</button>
+          <button class="btn btn-dark" (click)="cadastrar()">Cadastrar</button>
         </div>
       </div>
     </div>
@@ -20,36 +20,26 @@
 </div>
 
 <div class="container col-5 my-5">
-    <div>
-        <h1 class="text-center mb-4">Todos os temas</h1>
-    </div>
+  <div>
+    <h1 class="text-center mb-4">Todos os temas</h1>
+  </div>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">ID</th>
         <th scope="col">Descrição</th>
         <th scope="col">Modificações</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
+      <tr *ngFor='let tema of listaTemas'>
+        <th>{{tema.id}}</th>
+        <td>{{tema.descricaoTema}}</td>
         <td>
           <div>
             <button class="mr-3 btn btn-info">Editar</button>
             <button class="btn btn-danger">Apagar</button>
           </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>
-            <div>
-                <button class="mr-3 btn btn-info">Editar</button>
-                <button class="btn btn-danger">Apagar</button>
-            </div>
         </td>
       </tr>
     </tbody>
