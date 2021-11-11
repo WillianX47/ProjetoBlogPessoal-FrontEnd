@@ -34,9 +34,9 @@ export class TemaService {
     );
   }
 
-  putTema(tema: Tema, id: number): Observable<Tema> {
+  putTema(tema: Tema): Observable<Tema> {
     return this.http.put<Tema>(
-      `https://willsblog.herokuapp.com/api/v1/tema/atualizar/${id}`,
+      `https://willsblog.herokuapp.com/api/v1/tema/atualizar`,
       tema,
       this.token
     );
