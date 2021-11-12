@@ -38,6 +38,7 @@ export class InicioComponent implements OnInit {
     }
     this.findAllTemas();
     this.getAllPostagem();
+    this.auth.refreshToken();
   }
 
   findAllTemas() {
@@ -55,6 +56,7 @@ export class InicioComponent implements OnInit {
   getByIdUsuario() {
     this.auth.getByIdUsuario(this.idUsuario).subscribe((resp: Usuario) => {
       this.usuario = resp;
+      console.log(this.usuario)
     });
   }
 
@@ -69,7 +71,6 @@ export class InicioComponent implements OnInit {
     this.postagem.temaPostagem = this.tema;
     this.usuario.id = this.idUsuario;
     this.postagem.criador = this.usuario;
-    console.log(this.postagem)
     this.postagemService
       .postPostagem(this.postagem)
       .subscribe((resp: Postagem) => {

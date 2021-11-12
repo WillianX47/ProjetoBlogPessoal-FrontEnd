@@ -43,7 +43,7 @@
         role="tab"
         aria-controls="nav-home"
         aria-selected="true"
-        >Home</a
+        >Todas as postagens</a
       >
       <a
         class="nav-link"
@@ -53,7 +53,8 @@
         role="tab"
         aria-controls="nav-profile"
         aria-selected="false"
-        >Profile</a
+        (click)="getByIdUsuario()"
+        >Minhas postagens</a
       >
       <a
         class="nav-link"
@@ -63,7 +64,7 @@
         role="tab"
         aria-controls="nav-contact"
         aria-selected="false"
-        >Contact</a
+        >Postagens por tema</a
       >
     </div>
   </nav>
@@ -106,7 +107,31 @@
       role="tabpanel"
       aria-labelledby="nav-profile-tab"
     >
-      ...
+      <div class="container-fluid d-flex flex-wrap">
+        <div
+          class="card m-3"
+          style="width: 15rem"
+          *ngFor="let postagem of usuario.minhasPostagens"
+        >
+          <div class="card-body" width="18rem">
+            <h5 class="card-title">{{ postagem.tituloPostagem }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ postagem.temaPostagem.descricaoTema }}
+            </h6>
+            <p class="card-text">
+              {{ postagem.textoPostagem }}
+            </p>
+            <p class="card-text">
+              <small class="text-muted">
+                {{ postagem.dataPostagem | date: "dd/MM/yyyy" }}
+              </small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted"> by {{ usuario.nome }} </small>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="tab-pane fade"
