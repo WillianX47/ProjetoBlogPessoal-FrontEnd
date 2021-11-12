@@ -30,6 +30,7 @@
   </div>
 </div>
 
+<!-- Card -->
 <div class="container">
   <hr />
   <nav class="d-flex justify-content-center">
@@ -73,53 +74,28 @@
       role="tabpanel"
       aria-labelledby="nav-home-tab"
     >
-      <div class="container-fluid d-flex flex-wrap justify-content-between">
-        <div class="card m-3" style="width: 18rem">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <div class="container-fluid d-flex flex-wrap">
+        <div
+          class="card m-3"
+          style="width: 15rem"
+          *ngFor="let postagem of listaPostagem"
+        >
+          <div class="card-body" width="18rem">
+            <h5 class="card-title">{{ postagem.tituloPostagem }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ postagem.temaPostagem.descricaoTema }}
+            </h6>
             <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              {{ postagem.textoPostagem }}
             </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-        <div class="card m-3" style="width: 18rem">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
             <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              <small class="text-muted">
+                {{ postagem.dataPostagem | date: "dd/MM/yyyy" }}
+              </small>
             </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-        <div class="card m-3" style="width: 18rem">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
             <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              <small class="text-muted"> by {{ postagem.criador.nome }} </small>
             </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-        <div class="card m-3" style="width: 18rem">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
           </div>
         </div>
       </div>
@@ -183,7 +159,12 @@
             placeholder="Texto"
             [(ngModel)]="postagem.textoPostagem"
           ></textarea>
-          <select [(ngModel)]="idTema" class="form-control" name="Tema" id="Tema">
+          <select
+            [(ngModel)]="idTema"
+            class="form-control"
+            name="Tema"
+            id="Tema"
+          >
             <option *ngFor="let tema of listaTemas" value="{{ tema.id }}">
               {{ tema.descricaoTema }}
             </option>

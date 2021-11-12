@@ -38,7 +38,6 @@ export class InicioComponent implements OnInit {
     }
     this.findAllTemas();
     this.getAllPostagem();
-    this.postagemService.refreshToken();
   }
 
   findAllTemas() {
