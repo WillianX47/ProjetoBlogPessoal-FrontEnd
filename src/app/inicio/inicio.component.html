@@ -166,7 +166,14 @@
       </div>
       <div class="modal-body">
         <form action="form">
-          <input class="form-control" type="text" placeholder="Titulo" />
+          <input
+            name="titulo"
+            id="titulo"
+            class="form-control"
+            type="text"
+            placeholder="Titulo"
+            [(ngModel)]="postagem.tituloPostagem"
+          />
           <textarea
             class="form-control my-3"
             name="texto"
@@ -174,20 +181,27 @@
             cols="30"
             rows="3"
             placeholder="Texto"
+            [(ngModel)]="postagem.textoPostagem"
           ></textarea>
-          <select class="form-control" name="Tema" id="Tema">
-            <option value="Tema01">Tema01</option>
+          <select [(ngModel)]="idTema" class="form-control" name="Tema" id="Tema">
+            <option *ngFor="let tema of listaTemas" value="{{ tema.id }}">
+              {{ tema.descricaoTema }}
+            </option>
           </select>
         </form>
         <p class="mt-2 text-center">
-          Se não existir um tema,<span><a data-dismiss="modal" routerLink="/tema"> clique aqui</a></span>
+          Se não existir um tema,<span
+            ><a data-dismiss="modal" routerLink="/tema"> clique aqui</a></span
+          >
         </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Cancelar
         </button>
-        <button type="button" class="btn btn-primary">Criar postagem</button>
+        <button type="button" class="btn btn-primary" (click)="postPostagem()">
+          Criar postagem
+        </button>
       </div>
     </div>
   </div>
