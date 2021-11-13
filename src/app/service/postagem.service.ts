@@ -49,4 +49,11 @@ export class PostagemService {
       this.token
     );
   }
+
+  deletePostagem(id: number): Observable<Postagem> {
+    return this.http.delete<Postagem>(
+      `https://willsblog.herokuapp.com/api/v1/postagem/deletarPostagem/${id}`,
+      this.token
+    );
+  }
 }
