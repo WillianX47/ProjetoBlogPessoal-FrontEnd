@@ -41,4 +41,12 @@ export class PostagemService {
       this.token
     );
   }
+
+  putPostagem(postagem: Postagem): Observable<Postagem> {
+    return this.http.put<Postagem>(
+      'https://willsblog.herokuapp.com/api/v1/postagem/atualizarPostagem',
+      postagem,
+      this.token
+    );
+  }
 }
