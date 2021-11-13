@@ -56,7 +56,6 @@ export class InicioComponent implements OnInit {
   getByIdUsuario() {
     this.auth.getByIdUsuario(this.idUsuario).subscribe((resp: Usuario) => {
       this.usuario = resp;
-      console.log(this.usuario)
     });
   }
 
