@@ -21,10 +21,9 @@ export class AuthService {
     };
   }
 
-  putUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(
-      'https://willsblog.herokuapp.com/api/v1/usuario/atualizar',
-      usuario,
+  getByIdUsuario(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(
+      `https://willsblog.herokuapp.com/api/v1/usuario/${id}`,
       this.token
     );
   }
@@ -43,9 +42,10 @@ export class AuthService {
     );
   }
 
-  getByIdUsuario(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(
-      `https://willsblog.herokuapp.com/api/v1/usuario/${id}`,
+  putUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(
+      'https://willsblog.herokuapp.com/api/v1/usuario/atualizar',
+      usuario,
       this.token
     );
   }

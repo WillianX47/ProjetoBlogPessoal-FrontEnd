@@ -34,17 +34,17 @@ export class TemaService {
     );
   }
 
-  putTema(tema: Tema): Observable<Tema> {
-    return this.http.put<Tema>(
-      `https://willsblog.herokuapp.com/api/v1/tema/atualizar`,
+  postTema(tema: Tema): Observable<Tema> {
+    return this.http.post<Tema>(
+      'https://willsblog.herokuapp.com/api/v1/tema/criar',
       tema,
       this.token
     );
   }
 
-  postTema(tema: Tema): Observable<Tema> {
-    return this.http.post<Tema>(
-      'https://willsblog.herokuapp.com/api/v1/tema/criar',
+  putTema(tema: Tema): Observable<Tema> {
+    return this.http.put<Tema>(
+      `https://willsblog.herokuapp.com/api/v1/tema/atualizar`,
       tema,
       this.token
     );

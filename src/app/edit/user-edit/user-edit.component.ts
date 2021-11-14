@@ -28,10 +28,9 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
 
-    // if (environment.token == '') {
-    //   this.router.navigate(['/entrar']);
-    // }
-    let id = this.route.snapshot.params['id'];
+    if (environment.token == '') {
+      this.router.navigate(['/entrar']);
+    }
     this.refreshToken();
   }
 
@@ -45,7 +44,6 @@ export class UserEditComponent implements OnInit {
     };
   }
 
-
   confirmSenha(event: any) {
     this.confirmarSenha = event.target.value;
   }
@@ -54,23 +52,23 @@ export class UserEditComponent implements OnInit {
     this.tipoUsuario = event.target.value;
   }
 
-  atualizar(){
-    this.usuario.id = this.usuarioId
-    this.usuario.tipo = this.tipoUsuario
+  atualizar() {
+    this.usuario.id = this.usuarioId;
+    this.usuario.tipo = this.tipoUsuario;
     if (this.usuario.senha != this.confirmarSenha) {
       alert('As senhas estão diferentes');
     } else {
-      this.authService.putUsuario(this.usuario).subscribe((resp: Usuario)=>{
-        this.usuario = resp
-        alert("Usuario atualizado")
-        environment.id = 0
-        environment.nome = ''
-        environment.tipo = ''
-        environment.token = ''
-        environment.usuario = ''
-        environment.foto = ''
-        this.router.navigate(["/entrar"])
-      })
+      this.authService.putUsuario(this.usuario).subscribe((resp: Usuario) => {
+        this.usuario = resp;
+        alert('Usuario atualizado');
+        environment.id = 0;
+        environment.nome = '';
+        environment.tipo = '';
+        environment.token = '';
+        environment.usuario = '';
+        environment.foto = '';
+        this.router.navigate(['/entrar']);
+      });
     }
   }
 }
