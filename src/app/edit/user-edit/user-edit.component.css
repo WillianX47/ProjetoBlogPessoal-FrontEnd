@@ -1,0 +1,20 @@
+#img-bg{
+    background-image: url(https://i.imgur.com/jHD6HQm.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bt-entrar{
+    background-color: #016a6d;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16pt;
+}
+
+.bt-cancelar{
+    background-color: red;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16pt;
+}
